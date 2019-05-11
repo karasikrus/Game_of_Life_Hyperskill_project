@@ -11,7 +11,8 @@ public class Main {
 
         int n_lines = scanner.nextInt();
         //long s_seed = scanner.nextLong();
-        int m_number = scanner.nextInt();
+        //int m_number = scanner.nextInt();
+        int m_number = 10;
         FieldState field = new FieldState(n_lines);
         //field.print();
         //System.out.println("-------------next generation----------");
