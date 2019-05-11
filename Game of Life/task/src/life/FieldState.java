@@ -10,9 +10,9 @@ public class FieldState {
         this.field = field;
     }
 
-    public FieldState(int n_lines, long s_seed) {
+    public FieldState(int n_lines) {
         field = new boolean[n_lines][n_lines];
-        Random random = new Random(s_seed);
+        Random random = new Random(System.currentTimeMillis());
         for(int i = 0; i<n_lines; i++){
             for (int j = 0; j< n_lines; j++){
                 field[i][j] = random.nextBoolean();

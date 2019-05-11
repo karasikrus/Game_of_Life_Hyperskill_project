@@ -10,9 +10,9 @@ public class Main {
 
 
         int n_lines = scanner.nextInt();
-        long s_seed = scanner.nextLong();
+        //long s_seed = scanner.nextLong();
         int m_number = scanner.nextInt();
-        FieldState field = new FieldState(n_lines, s_seed);
+        FieldState field = new FieldState(n_lines);
         //field.print();
         //System.out.println("-------------next generation----------");
         for(int i =0; i <= m_number; i++){
