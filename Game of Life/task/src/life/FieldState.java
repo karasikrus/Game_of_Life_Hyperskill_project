@@ -21,11 +21,22 @@ public class FieldState {
     }
     public void print(){
         for(int i = 0; i<field.length; i++){
-            for (int j = 0; j< field[i].length; j++){
+            for (int j = 0; j< field.length; j++){
                 System.out.print(field[i][j] ? 'O' : ' ');
             }
             System.out.println();
         }
+    }
+    public int getAliveAmount(){
+        int result = 0;
+        for(int i = 0; i<field.length; i++){
+            for (int j = 0; j< field.length; j++){
+                if (field[i][j]){
+                    result++;
+                }
+            }
+        }
+        return result;
     }
 
     public boolean[][] getField() {

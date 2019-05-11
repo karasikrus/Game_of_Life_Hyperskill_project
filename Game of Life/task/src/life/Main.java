@@ -24,6 +24,7 @@ public class Main {
             }
             catch (IOException | InterruptedException e) {}
             System.out.println("Generation #"+ (i+1));
+            System.out.println("Alive: "+ (field.getAliveAmount()));
             field.print();
             field = stateGenerator.generateNextState(field);
             try {
