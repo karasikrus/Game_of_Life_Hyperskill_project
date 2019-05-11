@@ -15,18 +15,22 @@ public class Main {
         FieldState field = new FieldState(n_lines, s_seed);
         //field.print();
         //System.out.println("-------------next generation----------");
-        for(int i =0; i < m_number; i++){
-            try{
-                if (System.getProperty("os.name").contains("Windows")){
-                    new ProcessBuilder("cmd","/c","cls").inheritIO().start();
-                } else{
+        for(int i =0; i <= m_number; i++){
+            try {
+                if (System.getProperty("os.name").contains("Windows"))
+                    new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
+                else
                     Runtime.getRuntime().exec("clear");
-                }
-            } catch (IOException e){}
+            }
+            catch (IOException | InterruptedException e) {}
             System.out.println("Generation #"+ (i+1));
-            field = stateGenerator.generateNextState(field);
             field.print();
-            scanner.next();
+            field = stateGenerator.generateNextState(field);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
 
