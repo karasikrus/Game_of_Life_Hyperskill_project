@@ -1,12 +1,35 @@
 package life;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
+
+class MyJComponent extends JComponent {
+    public void paint(Graphics g) {
+        g.setColor(Color.green);
+        g.fillRect(30, 30, 100, 100);
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StateGenerator stateGenerator = new StateGenerator();
+        //--------gui
+        MyJComponent component = new MyJComponent();
+        Rectangle rectangle = new Rectangle();
+        rectangle.setBounds(30,30,300,300);
+        JFrame frame = new JFrame("FrameDemo"); // создаём главное окно приложения
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // чтобы процесс завершался после закрытия окна
+        JButton button1 = new JButton("Button 1");
+        button1.setBounds(0,0,100,70);// создаём кнопку
+        frame.add(button1); // добавляем кнопку на окно
+        frame.add(component);
+       // frame.pack(); // автоматически настраиваем размер окна под содержимое
+        frame.setSize(400, 500);
+        frame.setVisible(true); // отображаем окно
+        ////
 
 
         int n_lines = scanner.nextInt();
