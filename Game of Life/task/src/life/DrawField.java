@@ -41,6 +41,8 @@ public class DrawField extends JComponent {
     }
 
     public void paint(Graphics g) {
+        super.repaint();
+        super.revalidate();
         g.setColor(color);
        // g.fillRect(x, y, width, height);
        // g.drawRect(x+10,y+10,width,height);

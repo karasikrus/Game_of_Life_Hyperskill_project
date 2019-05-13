@@ -1,6 +1,7 @@
 package life;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -14,13 +15,13 @@ public class Main {
 
         JFrame frame = new JFrame("FrameDemo"); // создаём главное окно приложения
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // чтобы процесс завершался после закрытия окна
-        JButton button1 = new JButton("Button 1");
-        button1.setBounds(0,0,100,70);// создаём кнопку
+       // JButton button1 = new JButton("Button 1");
+       // button1.setBounds(0,0,100,70);// создаём кнопку
         //frame.add(button1); // добавляем кнопку на окно
 
        // frame.pack(); // автоматически настраиваем размер окна под содержимое
-        frame.setSize(400, 500);
-        frame.setVisible(true);// отображаем окно
+        //frame.setSize(400, 500);
+        //frame.setVisible(true);// отображаем окно
         ////
 
 
@@ -30,6 +31,9 @@ public class Main {
         int m_number = 10;
         FieldState field = new FieldState(n_lines);
         DrawField drawField = new DrawField(field.getField());
+        JLabel generationLabel = new JLabel();
+        JLabel aliveAmountLabel = new JLabel();
+        JPanel textInfo = new JPanel();
         //field.print();
         //System.out.println("-------------next generation----------");
         for(int i =0; i <= m_number; i++){
@@ -40,13 +44,23 @@ public class Main {
                     Runtime.getRuntime().exec("clear");
             }
             catch (IOException | InterruptedException e) {}
-            System.out.println("Generation #"+ (i+1));
-            System.out.println("Alive: "+ (field.getAliveAmount()));
-            field.print();
+            String generationNumber = "Generation #"+ (i+1);
+            String aliveAmount = "Alive: "+ (field.getAliveAmount());
+           // System.out.println(generationNumber);
+           // System.out.println(aliveAmount);
+           // field.print();
             boolean[][] drawableField = field.getField();
-            frame.setSize(100+5*drawableField.length, 100+5*drawableField.length);
+            frame.setSize(100+10*drawableField.length, 100+10*drawableField.length);
             //frame.setSize(400, 500);
+            frame.revalidate();
+            generationLabel.setText(generationNumber);
+            aliveAmountLabel.setText(aliveAmount);
+            textInfo.add(generationLabel, BorderLayout.NORTH);
+            textInfo.add(aliveAmountLabel, BorderLayout.AFTER_LAST_LINE);
+            textInfo.repaint();
+            frame.add(textInfo, BorderLayout.NORTH);
             frame.add(drawField);
+            frame.repaint();
             frame.setVisible(true);
             field = stateGenerator.generateNextState(field);
             drawField.setField(field.getField());
