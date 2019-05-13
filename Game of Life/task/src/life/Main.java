@@ -2,7 +2,6 @@ package life;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -13,7 +12,7 @@ public class Main {
         StateGenerator stateGenerator = new StateGenerator();
         //--------gui
 
-        JFrame frame = new JFrame("FrameDemo"); // создаём главное окно приложения
+        JFrame frame = new JFrame("Game of Life"); // создаём главное окно приложения
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // чтобы процесс завершался после закрытия окна
        // JButton button1 = new JButton("Button 1");
        // button1.setBounds(0,0,100,70);// создаём кнопку
@@ -37,13 +36,14 @@ public class Main {
         //field.print();
         //System.out.println("-------------next generation----------");
         for(int i =0; i <= m_number; i++){
-            try {
+            /*try {
                 if (System.getProperty("os.name").contains("Windows"))
                     new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
                 else
                     Runtime.getRuntime().exec("clear");
             }
             catch (IOException | InterruptedException e) {}
+            */
             String generationNumber = "Generation #"+ (i+1);
             String aliveAmount = "Alive: "+ (field.getAliveAmount());
            // System.out.println(generationNumber);
