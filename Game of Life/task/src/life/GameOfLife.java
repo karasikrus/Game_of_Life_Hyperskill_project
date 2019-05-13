@@ -34,9 +34,13 @@ public class GameOfLife {
         JLabel generationLabel = new JLabel();
         JLabel aliveAmountLabel = new JLabel();
         JPanel textInfo = new JPanel();
+        PauseButton pauseButton = new PauseButton();
         //field.print();
         //System.out.println("-------------next generation----------");
-        for(int i =0; i <= m_number; i++){
+        for(int i =0; true; i++){
+            while (pauseButton.isPaused()){
+
+            }
             /*try {
                 if (System.getProperty("os.name").contains("Windows"))
                     new ProcessBuilder("cmd","/c","cls").inheritIO().start().waitFor();
@@ -51,7 +55,7 @@ public class GameOfLife {
             // System.out.println(aliveAmount);
             // field.print();
             boolean[][] drawableField = field.getField();
-            frame.setSize(100+10*drawableField.length, 100+10*drawableField.length);
+            frame.setSize(100+10*drawableField.length, 130+10*drawableField.length);
             //frame.setSize(400, 500);
             frame.revalidate();
             generationLabel.setText(generationNumber);
@@ -61,10 +65,15 @@ public class GameOfLife {
             textInfo.repaint();
             frame.add(textInfo, BorderLayout.NORTH);
             frame.add(drawField);
+            frame.add(pauseButton, BorderLayout.SOUTH);
             frame.repaint();
             frame.setVisible(true);
             field = stateGenerator.generateNextState(field);
             drawField.setField(field.getField());
+            // boolean isPaused = false;
+            //isPaused = pauseButton.isPaused();
+
+            //isPaused = false;
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
