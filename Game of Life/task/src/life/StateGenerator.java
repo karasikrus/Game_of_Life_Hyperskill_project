@@ -3,8 +3,8 @@ package life;
 public class StateGenerator {
     public StateGenerator() {
     }
-    public FieldState generateNextState(FieldState field){
-        boolean[][] thisField = field.getField();
+    public FieldState generateNextState(boolean[][] field){
+        boolean[][] thisField = field;
         boolean[][] nextField = new boolean[thisField.length][thisField.length];
         for(int i = 0; i<thisField.length; i++){
             for (int j = 0; j< thisField.length; j++){

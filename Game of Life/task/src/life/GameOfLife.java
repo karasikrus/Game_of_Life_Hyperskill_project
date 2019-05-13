@@ -10,25 +10,18 @@ public class GameOfLife {
     }
     public void run(){
         Scanner scanner = new Scanner(System.in);
-        StateGenerator stateGenerator = new StateGenerator();
+        //StateGenerator stateGenerator = new StateGenerator();
         //--------gui
 
-        JFrame frame = new JFrame("Game of Life"); // создаём главное окно приложения
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // чтобы процесс завершался после закрытия окна
-        // JButton button1 = new JButton("Button 1");
-        // button1.setBounds(0,0,100,70);// создаём кнопку
-        //frame.add(button1); // добавляем кнопку на окно
+        JFrame frame = new JFrame("Game of Life");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // frame.pack(); // автоматически настраиваем размер окна под содержимое
-        //frame.setSize(400, 500);
-        //frame.setVisible(true);// отображаем окно
-        ////
 
 
         int n_lines = scanner.nextInt();
         //long s_seed = scanner.nextLong();
         //int m_number = scanner.nextInt();
-        int m_number = 10;
+        //int m_number = 10;
         FieldState field = new FieldState(n_lines);
         DrawField drawField = new DrawField(field.getField());
         JLabel generationLabel = new JLabel();
@@ -46,7 +39,7 @@ public class GameOfLife {
             if(resetButton.isReset()){
                 resetButton.setReset(false);
                 i = 0;
-                field = stateGenerator.generateNextState(field);
+                field.resetField();
             }
             /*try {
                 if (System.getProperty("os.name").contains("Windows"))
@@ -63,7 +56,6 @@ public class GameOfLife {
             // field.print();
             boolean[][] drawableField = field.getField();
             frame.setSize(100+10*drawableField.length, 150+10*drawableField.length);
-            //frame.setSize(400, 500);
             frame.revalidate();
             generationLabel.setText(generationNumber);
             aliveAmountLabel.setText(aliveAmount);
@@ -80,12 +72,8 @@ public class GameOfLife {
             frame.add(buttons, BorderLayout.SOUTH);
             frame.repaint();
             frame.setVisible(true);
-            field = stateGenerator.generateNextState(field);
+            field = field.getNext();
             drawField.setField(field.getField());
-            // boolean isPaused = false;
-            //isPaused = pauseButton.isPaused();
-
-            //isPaused = false;
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
